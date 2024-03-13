@@ -1,0 +1,3 @@
+Usuários (*ID*: integer auto_increment, NOME: varchar(255) not null, EMAIL: varchar(255) not null, SENHA: varchar(50) not null);
+
+Tarefas (*ID*: integer auto_increment, DESCRICAO: text not null, DATA: datetime not null, STATUS: varchar(20) not null, ID_USUARIO: integer not null REFERENCES[Usuários: ID]);
