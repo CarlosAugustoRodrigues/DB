@@ -19,13 +19,15 @@ const read = (req, res) => {
 }
 
 const update = (req, res) => {
-    const id = req = req.params.id;
-    const {descricao, status ,responsavel} = req.body;
-    
-    let query = `UPDATE tarefas SET descricao = '${descricao}', status = '${status}', responsavel = '${responsavel}' WHERE id = ${id}`;
+    const id = req.params.id;
+    const {descricao, status, responsavel} = req.body;
+    let query = `UPDATE tarefas SET descricao = '${descricao}', status = '${status}', responsavel = '${responsavel}' WHERE id = '${id}'`;
     con.query(query, (err, result) => {
-        if (err) throw err;
-        res.send(result);
+        if(err) {
+            res.json(err).end();
+        } else {
+            result.affectedRows > 0 ? res.json(result).end() : res.json({error: 'Item não encontrado!'}).end();
+        }
     })
 }
 

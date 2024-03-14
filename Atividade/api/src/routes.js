@@ -5,8 +5,8 @@ const apiResponse = (req, res) => {
     res.send('API Online');
 };
 
-const tasks = require('./controllers/tarefas');
-const users = require('./controllers/usuarios');
+const tarefas = require('./controllers/tarefas');
+const usuarios = require('./controllers/usuarios');
 
 routes.get('/', apiResponse);
 
@@ -21,4 +21,5 @@ routes.put('/usuarios/:id', usuarios.update);
 routes.delete('/usuarios/:id', usuarios.del);
 
 module.exports = routes;
+
 
