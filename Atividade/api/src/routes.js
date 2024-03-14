@@ -10,7 +10,15 @@ const users = require('./controllers/usuarios');
 
 routes.get('/', apiResponse);
 
-routes.post('/tarefas', tasks.create);
-routes.get('/tarefas', tasks.read);
-routes.put('/tarefas/:id', tasks.update);
-routes.delete('/tarefas/:id', tasks.del);
+routes.post('/tarefas', tarefas.create);
+routes.get('/tarefas', tarefas.read);
+routes.put('/tarefas/:id', tarefas.update);
+routes.delete('/tarefas/:id', tarefas.del);
+
+routes.post('/usuarios', usuarios.create);
+routes.get('/usuarios', usuarios.read);
+routes.put('/usuarios/:id', usuarios.update);
+routes.delete('/usuarios/:id', usuarios.del);
+
+module.exports = routes;
+
