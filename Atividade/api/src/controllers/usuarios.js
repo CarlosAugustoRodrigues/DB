@@ -3,21 +3,25 @@ var MD5 = function(d){var r = M(V(Y(X(d),8*d.length)));return r.toLowerCase()};f
 const con = require('../connect/connect').con;
 
 const create = (req, res) => {
-    let {nome, email, senha} = req.body;
-
-    let query = `INSERT TO usuarios (nome, email, senha) VALUES ( '${nome}', '${email}', '${senha}')`;
+    const {nome, email, senha} = req.body;
+    const query = `INSERT INTO usuarios(nome, email, senha) VALUE ('${nome}', '${email}', '${senha}')`;
     con.query(query, (err, result) => {
-        if (err) throw err;
-        res.send(result);
-    });
+        if(err) {
+            res.send(err);
+        }else{
+            res.send(result);
+        }
+    })
 }
 
 const read = (req, res) => {
-    let query = `SELECT * FROM usuarios`;
+    const query = 'SELECT * FROM usuarios';
     con.query(query, (err, result) => {
-        if (err) throw err;
+        if(err) {
+            res.send(err);
+        }
         res.send(result);
-    });
+    })
 }
 
 const update = (req, res) => {
@@ -34,10 +38,12 @@ const update = (req, res) => {
 }
 
 const del = (req, res) => {
-    const id = req = req.params.id;
-    let query = `DELETE FROM usuarios WHERE id = ${id}`;
+    const id = req.params.id;
+    const query = `DELETE FROM usuarios WHERE id = '${id}'`;
     con.query(query, (err, result) => {
-        if (err) throw err;
+        if(err) {
+            res.send(err);
+        }
         res.send(result);
     })
 }
