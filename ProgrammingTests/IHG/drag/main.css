@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.box {
+    width: 200px;
+    height: 130px;
+
+    background-color: lightblue;
+    border: 1px solid black;
+    cursor: grab;
+    position: absolute;
+}
+
+.box.dragging {
+    scale: 1.1;
+    cursor: grabbing;
+}
+
+.box.attached {
+    z-index: 1;
+}
+
+.card {
+    width: 280px;
+    height: 190px;
+
+    background-color: blue;
+    border: 1px solid black;
+
+    cursor: grab;
+    position: absolute;
+}
+
+.card.dragging {
+    scale: 1.1;
+    cursor: grabbing;
+}   
