@@ -1,21 +1,25 @@
 const con = require('../connect/connect').con;
 
 const create = (req, res) => {
-    let {descricao, status ,responsavel} = req.body;
-
-    let query = `INSERT TO tarefas (descricao, status ,responsavel) VALUES ( '${descricao}', '${status}', '${responsavel}')`;
+    const {descricao, status, responsavel } = req.body;
+    const query = `INSERT INTO tarefas(descricao, status, responsavel) VALUE ('${descricao}', '${status}', '${responsavel}')`;
     con.query(query, (err, result) => {
-        if (err) throw err;
-        res.send(result);
-    });
+        if(err) {
+            res.send(err);
+        }else{
+            res.send(result);
+        }
+    })
 }
 
 const read = (req, res) => {
-    let query = `SELECT * FROM tarefas`;
+    const query = 'SELECT * FROM tarefas';
     con.query(query, (err, result) => {
-        if (err) throw err;
+        if(err) {
+            res.send(err);
+        }
         res.send(result);
-    });
+    })
 }
 
 const update = (req, res) => {
@@ -32,10 +36,12 @@ const update = (req, res) => {
 }
 
 const del = (req, res) => {
-    const id = req = req.params.id;
-    let query = `DELETE FROM tarefas WHERE id = ${id}`;
+    const id = req.params.id;
+    const query = `DELETE FROM tarefas WHERE id = '${id}'`;
     con.query(query, (err, result) => {
-        if (err) throw err;
+        if(err) {
+            res.send(err);
+        }
         res.send(result);
     })
 }
