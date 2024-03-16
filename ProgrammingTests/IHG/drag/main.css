@@ -4,14 +4,53 @@
     box-sizing: border-box;
 }
 
+:root {
+
+    --background-color: #181818;
+
+    --border-color: #909090;
+
+    --hover-border-color: #b0b0b0;
+    --hover-background-color: #b0b0b083;
+
+    --card-color: #303030;
+    --box-color: #404040;
+}
+
+body {
+    background-color: var(--background-color);
+
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    position: relative;
+    overflow: hidden;
+
+    border: 1px solid red;
+}
+
 .box {
     width: 200px;
     height: 130px;
 
-    background-color: lightblue;
-    border: 1px solid black;
+    background-color: var(--box-color);
+    border: 2px solid var(--border-color);
     cursor: grab;
     position: absolute;
+
+    user-select: none;
 }
 
 .box.dragging {
@@ -20,6 +59,7 @@
 }
 
 .box.attached {
+    position: relative !important;
     z-index: 1;
 }
 
@@ -27,14 +67,38 @@
     width: 280px;
     height: 190px;
 
-    background-color: blue;
-    border: 1px solid black;
+    background-color: var(--card-color);
+    border: 2px solid var(--border-color);
 
     cursor: grab;
     position: absolute;
 }
 
+.card-container {
+    width: 225%;
+    height: 100%;
+    display: flex;
+    /* align-items: center; */
+    flex-wrap: wrap;
+
+    gap: 10px;
+
+    transform: translateX(-28%) translateY(110%);
+    pointer-events: none;
+    cursor: default;
+}
+
+.card-container > * {
+    pointer-events: all;
+}
+
 .card.dragging {
     scale: 1.1;
     cursor: grabbing;
-}   
+}
+
+.onHover {
+    scale: 1.05;
+    border: 2px solid var(--hover-border-color);
+    background-color: var(--hover-background-color);
+}
