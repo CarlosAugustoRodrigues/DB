@@ -17,15 +17,24 @@
     --box-color: #404040;
 }
 
+.modal {
+    pointer-events: none;
+    cursor: default;
+
+    display: none;
+
+    background-color: red !important;
+}
+
 body {
     background-color: var(--background-color);
 
-    width: 100vw;
+    /* width: 100vw;
     height: 100vh;
 
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: center; */
 }
 
 .container {
@@ -72,10 +81,12 @@ body {
 
     cursor: grab;
     position: absolute;
+
+    user-select: none;
 }
 
 .card-container {
-    width: 225%;
+    width: 620px;
     height: 100%;
     display: flex;
     /* align-items: center; */
@@ -86,6 +97,9 @@ body {
     transform: translateX(-28%) translateY(110%);
     pointer-events: none;
     cursor: default;
+
+    /* border-bottom: 1px solid red; */
+    /* overflow: hidden; */
 }
 
 .card-container > * {

@@ -21,5 +21,3 @@ routes.put('/usuarios/:id', usuarios.update);
 routes.delete('/usuarios/:id', usuarios.del);
 
 module.exports = routes;
-
-
