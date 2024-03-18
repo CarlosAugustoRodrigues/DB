@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Chathura:wght@100;300;400;700;800&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: currentColor;
+}
+
+:root {
+    --bg-primary: #0A0A0C;
+    --primary-text: #FFFEFF;
+    --secundary-text: #FFEFFF;
+    --inactive: #83848B;
+
+    --font-family: 'Quantico', sans-serif;
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--primary-text);
+    font-family: var(--font-family);
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    margin-inline: 10%;
+    margin-block: 30px;
+}
+
+.navigation {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+
+}
+
+header ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header ul li {
+    color: var(--inactive);
+    transition: color 0.3s ease-in-out;
+}
+
+header ul li:hover {
+    color: var(--primary-text);
+}
+
+.RL-buttons {
+    display: flex;
+    gap: 30px;
+}
+
+.RL-buttons button {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+
+    background-color: transparent;
+    border: none;
+
+    color: var(--inactive);
+    font-size: 18px;
+
+    transition: color 0.3s ease-in-out;
+    cursor: pointer;
+}
+
+.RL-buttons button:hover {
+    color: var(--primary-text);
+}

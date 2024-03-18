@@ -48,7 +48,7 @@ function render(type) {
 
             console.log(document.getElementById(task.responsavel))
 
-            if(document.getElementById(task.responsavel) == false) {
+            if(document.getElementById(task.responsavel) == null) {
                 container.appendChild(modal);
                 return
             }
