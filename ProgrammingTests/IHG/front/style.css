@@ -112,7 +112,15 @@ header ul li:hover {
     margin-top: 5%;
 }
 
-.center-text h1 {
+.center-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    margin-top: 20px;
+    gap: 10px;
+}.center-text h1 {
     font-size: 40px;
     
     /* background: -webkit-linear-gradient(45deg, var(--white), var(--pink-100), var(--purple-100)); */
@@ -120,10 +128,6 @@ header ul li:hover {
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-}
-
-.center-text p {
-    text-align: center;
 }
 
 .main-img {
@@ -138,5 +142,5 @@ header ul li:hover {
 }
 
 .main-view img {
-    width: 60%;
+    width: calc(100% - 160px);
 }
