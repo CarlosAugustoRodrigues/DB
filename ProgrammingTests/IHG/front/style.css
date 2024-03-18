@@ -11,6 +11,17 @@ a {
     color: currentColor;
 }
 
+/* Global */
+
+.key {
+    background-color: #242426;
+    border: 1px solid #404040;
+    padding: 3px 8px;
+    border-radius: 5px;
+
+    text-transform: uppercase;
+}
+
 :root {
     --bg-primary: #0A0A0C;
     --primary-text: #FFFEFF;
@@ -77,4 +88,14 @@ header ul li:hover {
 
 .RL-buttons button:hover {
     color: var(--primary-text);
+}
+
+/* Main */
+
+.center-text {
+    text-align: center;
+}
+
+.center-text p {
+    text-align: center;
 }
