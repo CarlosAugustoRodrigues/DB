@@ -52,7 +52,7 @@ header {
     display: flex;
     justify-content: space-between;
     margin-inline: 10%;
-    margin-block: 30px;
+    height: 10vh;
 }
 
 .navigation {
@@ -82,7 +82,7 @@ header ul li:hover {
     gap: 30px;
 }
 
-.RL-buttons button {
+.RL-buttons a {
     display: flex;
     gap: 5px;
     align-items: center;
@@ -97,7 +97,7 @@ header ul li:hover {
     cursor: pointer;
 }
 
-.RL-buttons button:hover {
+.RL-buttons a:hover {
     color: var(--primary-text);
 }
 
@@ -143,4 +143,100 @@ header ul li:hover {
 
 .main-view img {
     width: calc(100% - 160px);
+}
+
+/* Login & Register */
+
+.bg-blubble {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 150px;
+    height: 150px;
+
+    /* border-radius: 100%; */
+
+    background: linear-gradient(45deg, var(--pink-100), var(--purple-100));
+
+    z-index: -1;
+
+    /* filter: blur(15px); */
+    opacity: 0.3;
+
+    animation: blur 5s infinite;
+}
+
+@keyframes blur {
+    0%, 100% {
+        filter: blur(15px);
+        border-radius: 50%;
+    }
+    50% {
+        filter: blur(7px);
+        border-radius: 35%;
+    }
+    
+}
+
+.lr-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.lr-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 75vh;
+}
+
+.lr-page > .main-view {
+    margin: 0;
+    gap: 30px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-container form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-container input {
+    position: relative;
+    width: 80%;
+    height: 40px;
+
+    background: rgba(55, 55, 55, 0.4);
+    outline: none;
+    border: 1px solid var(--inactive);
+    border-radius: 25px;
+
+    padding: 0 20px;
+
+    color: var(--primary-text);
+}
+
+.form-submit {
+    display: flex;
+    transform: translateX(-150%);
+
+    font-size: 23px;
+    color: var(--inactive);
+    cursor: pointer;
+}
+
+.form-submit:hover {
+    color: var(--primary-text);
 }
