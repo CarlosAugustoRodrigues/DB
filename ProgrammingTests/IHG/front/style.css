@@ -28,6 +28,17 @@ a {
     --secundary-text: #FFEFFF;
     --inactive: #83848B;
 
+    --white: #FFFFFF;
+    --black: #000000;
+
+    --pink-100: #F795B4;
+    --pink-200: #F07C9D;
+    --pink-300: #FFAFCC;
+    --pink-400: #FF41A1;
+
+    --purple-100: #BB7FF8;
+    --purple-200: #D797FF;
+
     --font-family: 'Quantico', sans-serif;
 }
 
@@ -92,10 +103,40 @@ header ul li:hover {
 
 /* Main */
 
-.center-text {
-    text-align: center;
+.main-view {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-inline: 10%;
+    margin-top: 5%;
+}
+
+.center-text h1 {
+    font-size: 40px;
+    
+    /* background: -webkit-linear-gradient(45deg, var(--white), var(--pink-100), var(--purple-100)); */
+    background: -webkit-linear-gradient(45deg, var(--white), var(--purple-200), var(--purple-100));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .center-text p {
     text-align: center;
+}
+
+.main-img {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 20px;
+}
+
+.main-view img {
+    width: 60%;
 }
