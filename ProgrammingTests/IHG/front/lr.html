@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAG - Login</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="lrPages.js" defer></script>
+    <script src="lrFunction.js" defer></script>
+</head>
+<body>
+    <header class="lr-navigation">
+
+        <div class="logo navigation">
+            <a href="index.html">x</a>
+            <!-- <a href="index.html"><img src="imgs/Logo.png"></a>
+
+            <nav>
+                <ul>
+                    <li><a href="">Princing</a></li>
+                    <li><a href="">Updates</a></li>
+                    <li><a href="">Support</a></li>
+                </ul>
+            </nav> -->
+        </div> 
+    </header>
+    <main>
+        <div class="lr-login lr-page hidden">
+            <div class="main-view">
+                <img class="backgroundEffect" src="imgs/PurpleOrb.gif">
+                <div class="center-text lr-text">
+                    <h1>Login to MAG</h1>
+                    <p>If you gained access to MAG, you can enter your <br> email or login with your Google account</p>
+                </div>
+    
+                <div class="form-container">
+                    <form>
+                        <div>
+                            <input type="email" name="email" id="emailLogin" placeholder="Email" required>
+                            <i class="bi bi-arrow-right-circle form-submit" onclick="login()"></i>
+                        </div>
+
+                        <div>
+                            <input type="password" name="password" id="passwordLogin" placeholder="Password" required>
+                            <i class="bi bi-eye-slash-fill eye"></i>
+                        </div>
+
+                        <p class="alert opacity" style="user-select: none; color: rgb(214, 0, 0);">Email or password is wrong</p>
+                        
+                    </form>
+    
+                    <div class="googleLogin">
+                        <img src="imgs/googleIcon.svg">
+                        <p>Sign in with Google</p>
+                    </div>
+                </div>
+    
+                <div class="lr-lr">
+                    <p>Don't have an account? <span onclick="toggleLoginRegister()">Register</span></p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="lr-register lr-page hidden">
+            <div class="main-view">
+                <img class="backgroundEffect" src="imgs/PurpleOrb.gif">
+                <div class="center-text lr-text">
+                    <h1>Register to MAG</h1>
+                    <p>If you gained access to MAG, you can enter your <br> email or login with your Google account</p>
+                </div>
+    
+                <div class="form-container">
+                    <form class="registerForm">
+                        <div>
+                            <input type="email" name="email" id="emailRegister" placeholder="Email" required>
+                            <i class="bi bi-arrow-right-circle form-submit" onclick="register()"></i>
+                        </div>
+
+                        <div>
+                            <input type="password" name="password" id="passwordRegister" placeholder="Password" required>
+                            <i class="bi bi-eye-slash-fill eye"></i>
+                        </div>
+
+                        <div class="pswConfirm">
+                            <input type="password" name="confirmPassword" id="confirmPassword" placeholder="Confirm Password" required>
+                        </div>
+                        
+                    </form>
+    
+                    <div class="googleLogin">
+                        <img src="imgs/googleIcon.svg">
+                        <p>Sign in with Google</p>
+                    </div>
+                </div>
+    
+                <div class="lr-lr">
+                    <p>Already have an account? <span onclick="toggleLoginRegister()">Login</span></p>
+                </div>
+            </div>
+        </div>
+
+    </main>
+    <footer>
+        <div style="display: flex; align-items: center; gap: 20px;">
+            <img src="imgs/Logo.png">
+            <h2>MAG</h2>
+        </div>
+        <p>© 2024 - Mag. All rights reserved.</p>
+    </footer>
+</body>
+</html>
+

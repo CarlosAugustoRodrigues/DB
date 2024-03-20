@@ -13,6 +13,28 @@ a {
 
 /* Global */
 
+::-webkit-scrollbar {
+    width: 10px;
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--inactive);
+    border-radius: 10px;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.wrong {
+    border: 1px solid var(--wrong) !important;
+}
+
+.opacity {
+    opacity: 0;
+}
+
 .key {
     background-color: #242426;
     border: 1px solid #404040;
@@ -20,6 +42,25 @@ a {
     border-radius: 5px;
 
     text-transform: uppercase;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+
+    height: 10vh;
+
+    padding-inline: 5%;
+
+    background-color: #2F2F2F;
+}
+
+footer img {
+    padding: 5px 15px;
+    border-radius: 5px;
+    background-color: var(--black);
 }
 
 :root {
@@ -35,6 +76,8 @@ a {
     --pink-200: #F07C9D;
     --pink-300: #FFAFCC;
     --pink-400: #FF41A1;
+
+    --wrong: #FF0000;
 
     --purple-100: #BB7FF8;
     --purple-200: #D797FF;
@@ -131,8 +174,7 @@ header ul li:hover {
 }
 
 .main-img {
-    width: 100%;
-    height: 100%;
+    width: 70%;
 
     display: flex;
     align-items: center;
@@ -147,53 +189,21 @@ header ul li:hover {
 
 /* Login & Register */
 
-.bg-blubble {
-    position: absolute;
-
-    top: 50%;
-    left: 50%;
-
-    transform: translate(-50%, -50%);
-
-    width: 150px;
-    height: 150px;
-
-    /* border-radius: 100%; */
-
-    background: linear-gradient(45deg, var(--pink-100), var(--purple-100));
-
-    z-index: -1;
-
-    /* filter: blur(15px); */
-    opacity: 0.3;
-
-    animation: blur 5s infinite;
-}
-
-@keyframes blur {
-    0%, 100% {
-        filter: blur(15px);
-        border-radius: 50%;
-    }
-    50% {
-        filter: blur(7px);
-        border-radius: 35%;
-    }
-    
-}
-
 .lr-navigation {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    margin-inline: 5%;
+    font-size: 20px;
+    /* align-items: center;
+    justify-content: center; */
 }
 
 .lr-page {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
 
-    height: 75vh;
+    height: 80vh;
 }
 
 .lr-page > .main-view {
@@ -201,20 +211,48 @@ header ul li:hover {
     gap: 30px;
 }
 
+.lr-text h1 {
+    background: -webkit-linear-gradient(45deg, var(--white), var(--purple-100), var(--white));
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; 
+}
+
+.lr-text p {
+    color: var(--inactive);
+}
+
 .form-container {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
 }
 
 .form-container form {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+
+    gap: 20px;
+}
+
+.form-container form div {
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
 .form-container input {
-    position: relative;
     width: 80%;
     height: 40px;
 
@@ -228,15 +266,67 @@ header ul li:hover {
     color: var(--primary-text);
 }
 
-.form-submit {
+form i {
+    position: absolute;
     display: flex;
-    transform: translateX(-150%);
+
+    right: 13%;
 
     font-size: 23px;
     color: var(--inactive);
     cursor: pointer;
 }
 
-.form-submit:hover {
+form i:hover {
     color: var(--primary-text);
+}
+
+.googleLogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-top: 10px;
+
+    opacity: 0.7;
+
+    gap: 15px;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.4s ease-in-out;
+}
+
+.googleLogin:hover {
+    opacity: 1;
+}
+
+.googleLogin img {
+    width: 30px;
+}
+
+.lr-lr {
+    position: absolute;
+    bottom: 3%;
+
+    color: var(--inactive);
+}
+
+.lr-lr span {
+    color: var(--primary-text);
+    cursor: pointer;
+}
+
+.backgroundEffect {
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+    width: 30% !important;
+    z-index: -1;
+
+    filter: blur(55px);
+    pointer-events: none;
 }
