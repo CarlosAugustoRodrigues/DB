@@ -18,8 +18,19 @@ function login() {
     let passwordLogin = document.getElementById('passwordLogin');
     let alertmsg = document.querySelector('.alert');
 
+    emailLogin.addEventListener('input', () => {
+        emailLogin.classList.remove('wrong');
+    });
+
+    passwordLogin.addEventListener('input', () => {
+        passwordLogin.classList.remove('wrong');
+    });
+
     if(emailLogin.value == '' || passwordLogin.value == '') {
-        if(emailLogin.value == '') {
+        if(emailLogin.value == '' && passwordLogin.value == '') {
+            emailLogin.classList.add('wrong');
+            passwordLogin.classList.add('wrong');
+        } else if(emailLogin.value == '') {
             emailLogin.classList.add('wrong');
             
         } else if(passwordLogin.value == '') {
@@ -31,7 +42,6 @@ function login() {
     users.forEach(user => {
         if(emailLogin.value == user.email && passwordLogin.value == user.password) {
             alert('Login efetuado com sucesso!');
-            return
         };
     });
 
