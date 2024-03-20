@@ -1,0 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=Homenaje&family=Medula+One&family=Rationale&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --black: rgb(30, 30, 30);
+    --black-2: rgb(40, 40, 40);
+    --black-3: rgb(0, 0, 0);
+
+    --white: rgb(255, 255, 255);
+
+    --gray: rgb(180, 180, 180);
+    --gray-2: rgb(60, 60, 60);
+
+    --font: "Rationale", sans-serif;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    background-color: var(--black-2);
+    font-family: var(--font);
+}
+
+.card {
+    position: relative;
+
+    width: 350px;
+    height: 220px;
+
+    padding: 10px;
+
+    border-radius: 5px;
+    background: var(--black);
+
+    z-index: 1;
+}
+
+.descricao {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.card::before {
+    content: "";
+    width: 0;
+    height: 100%;
+    
+    position: absolute;
+    top: 0; left: 0;
+
+    border-radius: 5px;
+
+    z-index: -1;
+    transition: 1.2s;
+}
+.card:hover::before {
+    width: 100%;
+}
+
+.descricao span {
+    font-size: 20px;
+    font-weight: bold;
+
+    color: var(--white);
+}
+
+.descricao p {
+    font-size: 18px;
+    color: var(--white);
+    text-align: justify;
+    max-width: max-content;
+    word-wrap: break-word;
+}
