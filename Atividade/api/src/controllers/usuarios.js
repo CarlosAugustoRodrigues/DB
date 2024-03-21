@@ -59,12 +59,12 @@ const login = (req, res) => {
         } else {
             if(result.length > 0) {
                 if(result[0].senha == MD5(senha)) {
-                    res.send(result);
+                    res.status(200).json(result[0]);
                 } else {
-                    res.send({loginMessage: 'Senha inválida!'});
+                    res.status(401).json({loginMessage: 'Senha inválida!', type: 'password'});
                 }
             } else {
-                res.send({loginMessage: 'Email inválido!'});
+                res.status(401).json({loginMessage: 'Email inválido!', type: 'email'});
             }
         };
     });
