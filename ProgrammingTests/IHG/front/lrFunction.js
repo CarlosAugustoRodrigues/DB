@@ -1,36 +1,40 @@
 
 const uri = 'http://localhost:3000'
+const loginForm = document.querySelector('#loginForm');
 
-form.addEventListener('submit', () => {
+loginForm.addEventListener('submit', (e) => {
+
+    e.preventDefault();
 
     const data = {
-        emailLogin: document.getElementById('emailLogin'),
-        passwordLogin: document.getElementById('passwordLogin')
+        emailLogin: document.getElementById('emailLogin').value,
+        passwordLogin: document.getElementById('passwordLogin').value
     }
 
     let alertmsg = document.querySelector('.alert');
 
-    fetch(`${uri}/login`, {
+    fetch(`${uri}`, {
         method: 'POST',
         headers: { 
             "Content-Type": "application/json"
          },
         body: JSON.stringify(data)
     })
-    .then(response => response.json())
-    .then(response => {
-        if(response.status == 401) {
+    .then(res => res.json())
+    .then(res => {
+        // if(res.status == 401) {
 
-            alertmsg.classList.remove('opacity')
-            alertmsg.innerText = `${response.loginMessage}`;
+        //     alertmsg.classList.remove('opacity')
+        //     alertmsg.innerText = `${res.loginMessage}`;
 
-            if(response.type == 'password') {
-                data.passwordLogin.classList.add('wrong');
-            } else {
-                data.emailLogin.classList.add('wrong');
-            }
+        //     if(res.type == 'password') {
+        //         data.passwordLogin.classList.add('wrong');
+        //     } else {
+        //         data.emailLogin.classList.add('wrong');
+        //     }
 
-        } else if (response.status == 200) {
+        // } 
+        if (res.status == 200) {
             window.location.href = `${window.location.origin}/dashboard`;
         }
     });
