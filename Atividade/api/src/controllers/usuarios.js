@@ -50,37 +50,24 @@ const del = (req, res) => {
     })
 }
 
-const login = async (req, res) => {
-
-    try{
-        const {email, senha} = req.body;
-        
-        const user = await getUserByEmail(email);
-    
-        if(!user){
-            return res.status(401).json({error: "Usuário não encontrado!"});
-        }
-
-        if (!await bcrypt.compare(senha, user.senha)) {
-            return res.status(401).json({ error: 'Senha incorreta!' });
-        }
-
-        //Gerar token
-        const token = jwt.sign({ id: user.id }, authConfig.secret, { expiresIn: 86400 });
-
-        return res.json({  
-            token,  
-            nome: user.nome,  
-            email: user.email   
-        });
-      
-    } catch(e) {
-        console.log(e);
-        return res.status(500).json({ error: 'Erro no servidor'})
-    }
-
-};
-
-
+const login = (req, res) => {
+    const {email, senha} = req.body;
+    const login = `SELECT * FROM usuarios WHERE email = '${email}'`;
+    con.query(login, (err, result) => {
+        if(err) {
+            res.send(err);
+        } else {
+            if(result.length > 0) {
+                if(result[0].senha == MD5(senha)) {
+                    res.send(result);
+                } else {
+                    res.send({loginMessage: 'Senha inválida!'});
+                }
+            } else {
+                res.send({loginMessage: 'Email inválido!'});
+            }
+        };
+    });
+}
 
 module.exports = { create, read, update, del, login };
