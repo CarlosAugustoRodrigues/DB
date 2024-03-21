@@ -52,19 +52,19 @@ const del = (req, res) => {
 
 const login = (req, res) => {
     const {email, senha} = req.body;
-    const login = `SELECT * FROM usuarios WHERE email = '${email}'`;
-    con.query(login, (err, result) => {
+    const query = `SELECT * FROM usuarios WHERE email = '${email}'`;
+    con.query(query, (err, result) => {
         if(err) {
-            res.send(err);
+            res.status(400).json(err).end();
         } else {
             if(result.length > 0) {
                 if(result[0].senha == MD5(senha)) {
-                    res.status(200).json(result[0]);
+                    res.json({status: 200}).end();
                 } else {
-                    res.status(401).json({loginMessage: 'Senha inválida!', type: 'password'});
+                    res.json({loginMessage: 'Senha inválida!', type: 'password', status: 401}).end();
                 }
             } else {
-                res.status(401).json({loginMessage: 'Email inválido!', type: 'email'});
+                res.json({loginMessage: 'Email inválido!', type: 'email', status: 401}).end();
             }
         };
     });

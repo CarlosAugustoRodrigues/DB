@@ -1,41 +1,48 @@
 
 const uri = 'http://localhost:3000'
 const loginForm = document.querySelector('#loginForm');
+const alertmsg = document.querySelector('.alert');
+
+emailLogin.addEventListener('input', () => {
+    emailLogin.classList.remove('wrong');
+    alertmsg.classList.add('opacity');
+})
+
+passwordLogin.addEventListener('input', () => {
+    passwordLogin.classList.remove('wrong');
+    alertmsg.classList.add('opacity');
+})
 
 loginForm.addEventListener('submit', (e) => {
-
     e.preventDefault();
 
-    const data = {
-        emailLogin: document.getElementById('emailLogin').value,
-        passwordLogin: document.getElementById('passwordLogin').value
-    }
+    const emailLogin = document.querySelector('#emailLogin');
+    const passwordLogin = document.querySelector('#passwordLogin');
 
-    let alertmsg = document.querySelector('.alert');
-
-    fetch(`${uri}`, {
+    fetch(`${uri}/login`, {
         method: 'POST',
         headers: { 
             "Content-Type": "application/json"
          },
-        body: JSON.stringify(data)
+        body: JSON.stringify({
+            email: emailLogin.value,
+            senha: passwordLogin.value
+        })
     })
     .then(res => res.json())
     .then(res => {
-        // if(res.status == 401) {
+        if(res.status == 401) {
+            alertmsg.classList.remove('opacity')
+            alertmsg.innerText = `${res.loginMessage}`;
 
-        //     alertmsg.classList.remove('opacity')
-        //     alertmsg.innerText = `${res.loginMessage}`;
+            if(res.type == 'password') {
+                passwordLogin.classList.add('wrong');
+            } else {
+                emailLogin.classList.add('wrong');
+            }
 
-        //     if(res.type == 'password') {
-        //         data.passwordLogin.classList.add('wrong');
-        //     } else {
-        //         data.emailLogin.classList.add('wrong');
-        //     }
-
-        // } 
-        if (res.status == 200) {
-            window.location.href = `${window.location.origin}/dashboard`;
+        } else if (res.status == 200) {
+           alert('Login feito com sucesso!');
         }
     });
 });

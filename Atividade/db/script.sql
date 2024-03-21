@@ -4,6 +4,7 @@ USE db;
 
 CREATE TABLE usuarios(
     id INTEGER PRIMARY KEY AUTO_INCREMENT,
+    avatar VARCHAR(255),
     nome VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     senha  VARCHAR (50) NOT NULL
