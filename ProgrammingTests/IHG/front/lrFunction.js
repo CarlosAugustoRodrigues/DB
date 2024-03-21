@@ -1,49 +1,37 @@
 
+const uri = 'http://localhost:3000'
 
-var users = [
-    {
-        id: 1,
-        email: 'X5H6I@example.com',
-        password: '123456'
-    },
-    {
-        id: 2,
-        email: 'X5H6I2@example.com',
-        password: '123456'
+form.addEventListener('submit', () => {
+
+    const data = {
+        emailLogin: document.getElementById('emailLogin'),
+        passwordLogin: document.getElementById('passwordLogin')
     }
-];
 
-function login() {
-    let emailLogin = document.getElementById('emailLogin');
-    let passwordLogin = document.getElementById('passwordLogin');
     let alertmsg = document.querySelector('.alert');
 
-    emailLogin.addEventListener('input', () => {
-        emailLogin.classList.remove('wrong');
+    fetch(`${uri}/login`, {
+        method: 'POST',
+        headers: { 
+            "Content-Type": "application/json"
+         },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(response => {
+        if(response.status == 401) {
+
+            alertmsg.classList.remove('opacity')
+            alertmsg.innerText = `${response.loginMessage}`;
+
+            if(response.type == 'password') {
+                data.passwordLogin.classList.add('wrong');
+            } else {
+                data.emailLogin.classList.add('wrong');
+            }
+
+        } else if (response.status == 200) {
+            window.location.href = `${window.location.origin}/dashboard`;
+        }
     });
-
-    passwordLogin.addEventListener('input', () => {
-        passwordLogin.classList.remove('wrong');
-    });
-
-    if(emailLogin.value == '' || passwordLogin.value == '') {
-        if(emailLogin.value == '' && passwordLogin.value == '') {
-            emailLogin.classList.add('wrong');
-            passwordLogin.classList.add('wrong');
-        } else if(emailLogin.value == '') {
-            emailLogin.classList.add('wrong');
-            
-        } else if(passwordLogin.value == '') {
-            passwordLogin.classList.add('wrong');
-        }   
-        return;
-    }
-
-    users.forEach(user => {
-        if(emailLogin.value == user.email && passwordLogin.value == user.password) {
-            alert('Login efetuado com sucesso!');
-        };
-    });
-
-    alertmsg.classList.remove('opacity');
-}
+});
