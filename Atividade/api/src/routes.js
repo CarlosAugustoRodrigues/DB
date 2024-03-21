@@ -19,5 +19,6 @@ routes.post('/usuarios', usuarios.create);
 routes.get('/usuarios', usuarios.read);
 routes.put('/usuarios/:id', usuarios.update);
 routes.delete('/usuarios/:id', usuarios.del);
+routes.checkout('/login', usuarios.login);
 
 module.exports = routes;

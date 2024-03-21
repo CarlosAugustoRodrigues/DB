@@ -4,7 +4,7 @@ const con = require('../connect/connect').con;
 
 const create = (req, res) => {
     const {nome, email, senha} = req.body;
-    const query = `INSERT INTO usuarios(nome, email, senha) VALUE ('${nome}', '${email}', '${senha}')`;
+    const query = `INSERT INTO usuarios(nome, email, senha) VALUE ('${nome}', '${email}', '${MD5(senha)}')`;
     con.query(query, (err, result) => {
         if(err) {
             res.send(err);
@@ -19,8 +19,9 @@ const read = (req, res) => {
     con.query(query, (err, result) => {
         if(err) {
             res.send(err);
+        } else {
+            res.send(result);
         }
-        res.send(result);
     })
 }
 
@@ -43,10 +44,43 @@ const del = (req, res) => {
     con.query(query, (err, result) => {
         if(err) {
             res.send(err);
+        } else {
+            res.send(result);
         }
-        res.send(result);
     })
 }
 
-module.exports = { create, read, update, del };
+const login = async (req, res) => {
 
+    try{
+        const {email, senha} = req.body;
+        
+        const user = await getUserByEmail(email);
+    
+        if(!user){
+            return res.status(401).json({error: "Usuário não encontrado!"});
+        }
+
+        if (!await bcrypt.compare(senha, user.senha)) {
+            return res.status(401).json({ error: 'Senha incorreta!' });
+        }
+
+        //Gerar token
+        const token = jwt.sign({ id: user.id }, authConfig.secret, { expiresIn: 86400 });
+
+        return res.json({  
+            token,  
+            nome: user.nome,  
+            email: user.email   
+        });
+      
+    } catch(e) {
+        console.log(e);
+        return res.status(500).json({ error: 'Erro no servidor'})
+    }
+
+};
+
+
+
+module.exports = { create, read, update, del, login };

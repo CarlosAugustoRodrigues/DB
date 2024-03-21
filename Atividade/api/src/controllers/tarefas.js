@@ -17,8 +17,9 @@ const read = (req, res) => {
     con.query(query, (err, result) => {
         if(err) {
             res.send(err);
+        } else {
+            res.send(result);
         }
-        res.send(result);
     })
 }
 
@@ -41,8 +42,9 @@ const del = (req, res) => {
     con.query(query, (err, result) => {
         if(err) {
             res.send(err);
+        } else {
+            res.send(result);
         }
-        res.send(result);
     })
 }
 
