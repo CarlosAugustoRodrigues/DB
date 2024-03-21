@@ -166,7 +166,6 @@ header ul li:hover {
 }.center-text h1 {
     font-size: 40px;
     
-    /* background: -webkit-linear-gradient(45deg, var(--white), var(--pink-100), var(--purple-100)); */
     background: -webkit-linear-gradient(45deg, var(--white), var(--purple-200), var(--purple-100));
     background-clip: text;
     -webkit-background-clip: text;
