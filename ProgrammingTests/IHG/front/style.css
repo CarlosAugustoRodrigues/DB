@@ -141,7 +141,7 @@ header ul li:hover {
 }
 
 .RL-buttons a:hover {
-    color: var(--primary-text);
+    color: var(--primary-text); 
 }
 
 /* Main */
