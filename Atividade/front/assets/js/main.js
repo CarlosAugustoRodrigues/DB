@@ -10,16 +10,16 @@ const colors = [
     'var(--turquoise-200)',
     'var(--pink-100)',
 ];
-
-window.addEventListener('keydown', e => {
-    if (e.key === 't' || e.key === 'T') {
-        window.location.href = 'assets/pages/login.html';
-    } 
-})
+if(document.querySelector('.lr') == null) {
+    window.addEventListener('keydown', e => {
+        if (e.key === 't' || e.key === 'T') {
+            window.location.href = 'assets/pages/login.html';
+        } 
+    })
+}
 
 window.addEventListener('scroll', () => {
     header.classList.toggle('opaque', window.scrollY > 0);
-
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.clientHeight;
@@ -75,9 +75,6 @@ const numberAnimation = (section) => {
         let number = parseInt(info.getAttribute('data-value'));
         let count = 0;
         let duration = number / 3;
-
-        console.log(number)
-    
         let counter = setInterval(() => {
             info.querySelector('h3').innerText = `${++count}M+`
             if (count == number) {

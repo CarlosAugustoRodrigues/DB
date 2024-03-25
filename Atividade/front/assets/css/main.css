@@ -182,6 +182,11 @@ html {
 
 /* Global */
 
+.error-message p {
+    height: 20px;
+    overflow: hidden;
+}
+
 .logo {
     filter: invert(1);
     -webkit-user-drag: none;

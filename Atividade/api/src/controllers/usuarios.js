@@ -7,10 +7,10 @@ const create = (req, res) => {
     const query = `INSERT INTO usuarios(nome, email, senha) VALUE ('${nome}', '${email}', '${MD5(senha)}')`;
     con.query(query, (err, result) => {
         if(err) {
-            res.send(err);
-        }else{
-            res.send(result);
-        }
+            res.json({message: 'Email already exists', status: 400}).end();
+        } else {
+            res.json({status: 201}).end();
+        };
     })
 }
 
@@ -18,7 +18,7 @@ const read = (req, res) => {
     const query = 'SELECT * FROM usuarios';
     con.query(query, (err, result) => {
         if(err) {
-            res.send(err);
+            res.send();
         } else {
             res.send(result);
         }
@@ -61,10 +61,10 @@ const login = (req, res) => {
                 if(result[0].senha == MD5(senha)) {
                     res.json({status: 200}).end();
                 } else {
-                    res.json({loginMessage: 'Senha inválida!', type: 'password', status: 401}).end();
+                    res.json({message: 'Senha inválida!', type: 'password', status: 401}).end();
                 }
             } else {
-                res.json({loginMessage: 'Email inválido!', type: 'email', status: 401}).end();
+                res.json({message: 'Email inválido!', type: 'email', status: 401}).end();
             }
         };
     });
